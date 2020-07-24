@@ -20,4 +20,20 @@ class Asset {
     a.preload = 'auto'
     containerElement.appendChild(a)
   }
+
+  // fetch game assets and add to DOM
+  static loadAudioAssets() {
+    const audioContainer = document.getElementById('audio-container')
+    const soundFiles = ['B','C','H','K','L','O','Q','R','T','Y']
+    soundFiles.forEach((item, i) => {
+      const asset = new Asset({
+        file_path: `./sounds/${item}.ogg`,
+        name: item,
+        id: (i + 1)
+      })
+      asset.addToDOM(audioContainer)
+    })
+
+  }
+
 }
