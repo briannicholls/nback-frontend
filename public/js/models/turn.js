@@ -6,7 +6,7 @@ class Turn {
     this.trial_id = data.trial_id
     this.player_id = data.player_id
     this.grid_position = data.grid_position
-    this.asset_id = data.asset_id
+    // this.asset_id = data.asset_id
     this.user_selected_position = data.user_selected_position
     this.user_selected_audio = data.user_selected_audio
     this.save()

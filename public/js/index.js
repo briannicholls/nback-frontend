@@ -168,6 +168,7 @@ async function loadTurns(trialId) {
   let turnObjects = []
   for (let i = 0; i < turns.length; i++) {
     const t = new Turn(turns[i])
+    t.asset_id = Math.floor(Math.random() * 10) + 1
     turnObjects.push(t)
   }
   return turnObjects
