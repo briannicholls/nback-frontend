@@ -1,13 +1,3 @@
-const API = {
-  baseUrl: 'https://brians-brain-games.herokuapp.com'
-}
-
-const COOKIE = document.cookie
-//"username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"
-
-const GAME_SPEED = 3200
-
-
 document.addEventListener('DOMContentLoaded', () => {
   applyModal()
   addStartGameButton()
@@ -16,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // fetch game assets and add to DOM
 function loadAudioAssets() {
-
   const audioContainer = document.getElementById('audio-container')
   // get all assets needed for game
   fetch(`${API.baseUrl}/games/1/assets`)
@@ -32,7 +21,6 @@ function loadAudioAssets() {
 
 // Game Loop
 function startGameLoop(n_number) {
-
   createTrial(n_number)
 
   document.addEventListener('keydown', (e) => {
@@ -83,14 +71,6 @@ function takeTurn(turnObject, gridCells) {
   // display grid cell:
   toggleDisplay(gridCells[turnObject.grid_position], turnObject.id)
 
-  // for debugging:
-  // if (turnObject.trueMatch(1, 'grid_position')) {
-  //   console.log('pick me! grid match!')
-  // }
-  // if (turnObject.trueMatch(1, 'asset_id')) {
-  //   console.log('pick me! audio match!')
-  // }
-
   // play audio:
   const audioElement = document.getElementById(`audio-${turnObject.asset_id}`)
   audioElement.play()
@@ -109,17 +89,13 @@ function takeTurn(turnObject, gridCells) {
 }
 
 function endGame() {
-
   // Display results to user
   displayScoreModal()
 
   // re-enable start game button
   document.getElementById('start_game').disabled = false
 
-
   Trial.all[0].update()
-//  Turn.all = []
-//  Trial.all = []
 }
 
 function displayScoreModal() {
