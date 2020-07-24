@@ -27,7 +27,7 @@ class Asset {
     const soundFiles = ['B','C','H','K','L','O','Q','R','T','Y']
     soundFiles.forEach((item, i) => {
       const asset = new Asset({
-        file_path: `./sounds/${item}.ogg`,
+        file_path: `./public/sounds/${item}.ogg`,
         name: item,
         id: (i + 1)
       })
