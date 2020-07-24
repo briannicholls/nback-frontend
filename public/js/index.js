@@ -1,23 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   applyModal()
   addStartGameButton()
-  loadAudioAssets()
+  Asset.loadAudioAssets()
 })
-
-// fetch game assets and add to DOM
-function loadAudioAssets() {
-  const audioContainer = document.getElementById('audio-container')
-  // get all assets needed for game
-  fetch(`${API.baseUrl}/games/1/assets`)
-    .then(resp => resp.json())
-    .then(obj => {
-      obj.forEach((assetData) => {
-        const a = new Asset(assetData)
-        // load into DOM
-        a.addToDOM(audioContainer)
-      });
-    })
-}
 
 // Game Loop
 function startGameLoop(n_number) {
@@ -51,7 +36,6 @@ function startGameLoop(n_number) {
 }
 
 function mainLoop() {
-
   resetTurnCounter()
 
   const cells = document.getElementsByClassName('grid__item')
@@ -70,7 +54,7 @@ function takeTurn(turnObject, gridCells) {
   // turn actions: display grid element, play sound
   // display grid cell:
   toggleDisplay(gridCells[turnObject.grid_position], turnObject.id)
-
+  // console.log(turnObject)
   // play audio:
   const audioElement = document.getElementById(`audio-${turnObject.asset_id}`)
   audioElement.play()
